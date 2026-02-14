@@ -14,27 +14,27 @@
         {
             image: 'images/photo1.jpg',       // <-- Replace with your actual image
             title: 'Chapter One',
-            caption: 'Before you, my days were ordinary — like pages of a book with no story worth telling. And then you walked in, and suddenly every moment had color, every silence had meaning. This is where it all began.'
+            caption: 'Before you, my days were just ordinary, parang walang kulay. And then you came along and suddenly everything just started making sense. This is where it all began.'
         },
         {
             image: 'images/photo2.jpg',       // <-- Replace with your actual image
             title: 'The Way You Smile',
-            caption: 'There\'s this thing you do — you smile, and the whole world goes quiet. It\'s not fair, really. One look from you and I forget every worry I\'ve ever had. You have no idea the power you hold over me.'
+            caption: 'Theres this thing you do, you smile and the whole world goes quiet. It\'s so unfair kasi isang tingin mo lang and I forget every worry I ever had. You have no idea the power you have over me.'
         },
         {
             image: 'images/photo3.jpg',       // <-- Replace with your actual image
             title: 'Our Little World',
-            caption: 'In a world of billions, somehow we found each other. Every late-night conversation, every stolen glance, every inside joke — they\'re all tiny miracles. You\'re my favorite miracle, babe.'
+            caption: 'In a world of billions somehow we found each other. Every late night call, every kulitan, every small moment together, they\'re all tiny miracles to me. You\'re my favorite miracle babe.'
         },
         {
             image: 'images/photo4.jpg',       // <-- Replace with your actual image
             title: 'What You Mean to Me',
-            caption: 'You are the calm in my chaos, the warmth on my coldest days, and the reason I believe that love isn\'t just a word — it\'s something you can feel in your bones. You make everything make sense.'
+            caption: 'You are the calm in my chaos, the warmth on my coldest days. Because of you I believe that love isnt just a word, its something you can feel deep inside. You make everything make sense and you paint color in my life babe.'
         },
         {
             image: 'images/photo5.jpg',       // <-- Replace with your actual image
             title: 'Forever & Always',
-            caption: 'If I could bottle up this feeling and keep it forever, I would. But I don\'t need to — because I have you. And as long as I have you, every day is Valentine\'s Day. I love you, babe. Always.'
+            caption: 'If I could keep this feeling forever I would. But I dont need to, because I have you. And as long as I have you every day feels like Valentines Day. Mahal na mahal kita babe. Always.'
         }
     ];
 
@@ -177,6 +177,7 @@
 
             // Build and start secret page elements
             buildSlideshow();
+            loadSlideImages();
             createSparkleBurst();
 
             // Remove entrance overlay after animation
@@ -242,11 +243,32 @@
                     imgEl.alt = slides[i].title;
                     if (placeholder) placeholder.style.display = 'none';
                     container.insertBefore(imgEl, container.firstChild);
+
+                    container.addEventListener('click', () => openLightbox(imgPath));
                 };
                 img.src = imgPath;
             });
         }, 4500); // Wait for secret page animations
     }
+
+
+    // ========== LIGHTBOX ==========
+    function openLightbox(src) {
+        const lb = document.getElementById('lightbox');
+        document.getElementById('lightbox-img').src = src;
+        lb.classList.add('open');
+    }
+
+    function closeLightbox() {
+        const lb = document.getElementById('lightbox');
+        lb.classList.remove('open');
+        document.getElementById('lightbox-img').src = '';
+    }
+
+    document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+    document.getElementById('lightbox').addEventListener('click', function (e) {
+        if (e.target === this) closeLightbox();
+    });
 
 
     // ========== INIT ==========
