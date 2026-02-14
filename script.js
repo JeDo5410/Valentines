@@ -39,19 +39,12 @@
     ];
 
 
-    // ========== OBFUSCATED KEYWORD CHECK ==========
-    // The keyword is hashed so it's not visible in source code.
-    // Uses SHA-256 hashing for security.
     async function _h(s) {
         const d = new TextEncoder().encode(s.trim());
         const h = await crypto.subtle.digest('SHA-256', d);
         return Array.from(new Uint8Array(h)).map(b => b.toString(16).padStart(2, '0')).join('');
     }
 
-    // Pre-computed hash — do NOT change this unless you change the keyword
-    // To generate a new hash for a new keyword, run in browser console:
-    //   crypto.subtle.digest('SHA-256', new TextEncoder().encode('YOUR_KEYWORD'))
-    //     .then(h => console.log(Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2,'0')).join('')))
     const _k = '95d44c4185167115121eb711a477cd3e37bddf107e3150573130b6cecf1e2301';
 
 
