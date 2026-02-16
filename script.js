@@ -45,7 +45,7 @@
         return Array.from(new Uint8Array(h)).map(b => b.toString(16).padStart(2, '0')).join('');
     }
 
-    const _k = '95d44c4185167115121eb711a477cd3e37bddf107e3150573130b6cecf1e2301';
+    const _k = '20ef0d585f75aa3918e147c1da625bfc6f9791efe5b7881d87c092e66582f7e3';
 
 
     // ========== FLOATING HEARTS (Public Page) ==========
